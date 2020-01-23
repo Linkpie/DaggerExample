@@ -1,8 +1,10 @@
-package com.example.dagger;
+package com.muhammet.magsumov.dagger.ui;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dagger.R;
 
 import javax.inject.Inject;
 
