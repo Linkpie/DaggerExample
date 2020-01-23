@@ -25,6 +25,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidxVersion"
     implementation "androidx.core:core-ktx:$androidxVersion"
     testImplementation "junit:junit:$junitVersion"
+    api "com.jakewharton.threetenabp:threetenabp:1.0.5"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
