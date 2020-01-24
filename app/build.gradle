@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
@@ -21,22 +23,37 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
     implementation project(":shared")
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    //KOTLIN
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
+    //UI
     implementation "androidx.appcompat:appcompat:$rootProject.androidxVersion"
     implementation "androidx.core:core-ktx:$rootProject.androidxVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
-    testImplementation "junit:junit:$rootProject.junitVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.uiNavigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.uiNavigationVersion"
+    //
+    //ARCH
     api "com.google.dagger:dagger:$rootProject.daggerVersion"
     api "com.google.dagger:dagger-android:$rootProject.daggerVersion"
     api "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
+    kapt "com.android.databinding:compiler:$rootProject.dataBindingCompilerVersion"
+    testImplementation "android.arch.core:core-testing:$rootProject.archLifecycleVersion"
+    // UTIL
+    api "com.jakewharton.threetenabp:threetenabp:$rootProject.threetenabpVersion"
+    testImplementation "org.threeten:threetenbp:$rootProject.threetenbpVersion"
 }

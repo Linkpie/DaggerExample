@@ -1,4 +1,4 @@
-package com.muhammet.magsumov.dagger.ui
+package com.muhammet.magsumov.dagger.ui.feed
 
 import android.os.Bundle
 import android.view.LayoutInflater

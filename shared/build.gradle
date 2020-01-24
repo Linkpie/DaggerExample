@@ -21,11 +21,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-    implementation "androidx.appcompat:appcompat:$androidxVersion"
-    implementation "androidx.core:core-ktx:$androidxVersion"
-    testImplementation "junit:junit:$junitVersion"
-    api "com.jakewharton.threetenabp:threetenabp:1.0.5"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.androidxVersion"
+    implementation "androidx.core:core-ktx:$rootProject.androidxVersion"
+    // Utils
+    api "com.jakewharton.timber:timber:$rootProject.timberVersion"
+
+    // ThreeTenBP for the shared module only
+    testImplementation "org.threeten:threetenbp:$rootProject.threetenbpVersion"
+    compileOnly "org.threeten:threetenbp:$rootProject.threetenbpVersion:no-tzdb"
+    // Unit tests
+    testImplementation "android.arch.core:core-testing:$rootProject.archLifecycleVersion"
+    testImplementation "junit:junit:$rootProject.junitVersion"
+
+    // Instrumented tests
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
 }
