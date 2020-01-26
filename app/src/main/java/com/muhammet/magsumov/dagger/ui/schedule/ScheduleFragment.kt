@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
 import com.example.dagger.R
 import com.example.dagger.databinding.FragmentScheduleBinding
+import kotlinx.android.synthetic.main.toolbar.*
 
 class ScheduleFragment : Fragment() {
 
@@ -36,6 +37,11 @@ class ScheduleFragment : Fragment() {
 
 
         return binding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        toolbar.setTitle(R.string.title_schedule)
     }
 
     private fun observeViewModel(viewModel: ScheduleViewModel, binding: FragmentScheduleBinding) {
