@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shared.model.Session
 import com.muhammet.magsumov.shared.result.Result
-import com.muhammet.magsumov.shared.usecases.repository.LoadSessionsUsesCase
+import com.muhammet.magsumov.shared.usecases.repository.LoadSessionsUseCase
 
-class ScheduleViewModel(loadSessionUsesCase: LoadSessionsUsesCase) : ViewModel() {
+class ScheduleViewModel(loadSessionUseCase: LoadSessionsUseCase) : ViewModel() {
 
     private var _sessions = MutableLiveData<List<Session>>()
     private val _isLoading = MutableLiveData<Boolean>().apply { value = true }
@@ -19,7 +19,7 @@ class ScheduleViewModel(loadSessionUsesCase: LoadSessionsUsesCase) : ViewModel()
     val numberOfSessions = ObservableInt()
 
     init {
-        loadSessionUsesCase.executeAsync("someVar") { result: Result<List<Session>> ->
+        loadSessionUseCase.executeAsync("someVar") { result: Result<List<Session>> ->
 
             when (result) {
                 is Result.Success<List<Session>> -> {
