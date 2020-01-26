@@ -1,2 +1,2 @@
-include ':app', ':shared'
+include ':app', ':shared', ':tv'
 rootProject.name='Dagger'
